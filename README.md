@@ -1,8 +1,10 @@
-# Serenity Trade — Claude Code Skills Pack
-# Serenity 交易思維 — Claude Code 技能包
+# Serenity Trade — Multi-Agent Trading Skills Pack
+# Serenity 交易思維 — 多代理 AI 技能包
 
 > Distilled from @aleabitoreddit (Serenity) — former Reddit WSB trader, AI/Semi Supply Chain Analyst.  
 > 提煉自 @aleabitoreddit（Serenity）— 前 Reddit WSB 交易者，AI/半導體供應鏈分析師。
+>
+> Works with: **Claude Code · Hermes Agent · OpenAI Codex · ChatGPT · any agent with system prompt support**
 
 ---
 
@@ -58,22 +60,62 @@ Phase 4: 800V DC Power Infra  ← emerging (剛開始)
 
 ## Installation / 安裝方式
 
-Copy the `skills/` folder to your Claude Code global skills directory:
+### Claude Code
 
-將 `skills/` 資料夾複製到你的 Claude Code 全域 skills 目錄：
+Copy `skills/` to your global Claude skills directory:
 
-**Windows**
 ```powershell
+# Windows
 xcopy /E /I skills "%USERPROFILE%\.claude\skills"
 ```
-
-**macOS / Linux**
 ```bash
+# macOS / Linux
 cp -r skills/ ~/.claude/skills/
 ```
+Skills auto-trigger based on your question context — no slash commands needed.
 
-Skills auto-trigger based on your question context — no slash commands needed.  
-技能會根據你的問題自動觸發，不需要手動輸入指令。
+---
+
+### Hermes Agent
+
+Hermes uses the **same skill format** as Claude Code — just copy to `~/.hermes/skills/`:
+
+```bash
+cp -r skills/ ~/.hermes/skills/
+```
+
+Or place `AGENTS.md` in your project root — Hermes picks it up automatically:
+```bash
+cp AGENTS.md /your/project/AGENTS.md
+```
+
+---
+
+### OpenAI Codex
+
+Codex reads `AGENTS.md` from the project root automatically. Copy it to your repo:
+```bash
+cp AGENTS.md /your/project/AGENTS.md
+```
+
+For API usage, paste the contents of `openai/gpt-instructions.md` as your system prompt.
+
+---
+
+### ChatGPT Custom GPT / Any AI with System Prompt
+
+Open `openai/gpt-instructions.md` and paste the instructions block into your agent's
+system prompt, custom instructions, or "personality" field.
+
+Works with: ChatGPT Custom GPT builder, Claude.ai Projects, Cursor `.cursorrules`,
+Windsurf, any OpenAI-compatible API.
+
+---
+
+### Universal (any agent)
+
+Use `system-prompt/serenity-trading.md` — a self-contained single-file system prompt
+that works with any LLM. Paste it anywhere a system prompt is accepted.
 
 ---
 
